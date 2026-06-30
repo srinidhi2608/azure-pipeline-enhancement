@@ -1,0 +1,46 @@
+{
+  "manifestVersion": 1,
+  "id": "ecs-springboot-dashboard-widget",
+  "publisher": "your-publisher-id",
+  "version": "1.0.0",
+  "name": "ECS Spring Boot Dashboard Widget",
+  "description": "Custom Azure DevOps dashboard widget to monitor ECS services and trigger deployments.",
+  "public": false,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scopes": [
+    "vso.build",
+    "vso.build_execute"
+  ],
+  "files": [
+    {
+      "path": "widget",
+      "addressable": true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "ecs-dashboard-widget",
+      "type": "ms.vss-dashboards-web.widget",
+      "targets": [
+        "ms.vss-dashboards-web.widget-catalog"
+      ],
+      "properties": {
+        "name": "ECS Deployment Monitor",
+        "description": "Shows ECS service health, latest image, deployment user, and allows redeploy.",
+        "uri": "widget/widget.html",
+        "supportedSizes": [
+          "2x2",
+          "3x2",
+          "4x2"
+        ],
+        "supportedScopes": [
+          "project_team"
+        ]
+      }
+    }
+  ]
+}

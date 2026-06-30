@@ -1,0 +1,121 @@
+.widget-body {
+  margin: 0;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+  color: #242424;
+  background: #f8f8f8;
+}
+
+.widget-container {
+  padding: 12px;
+}
+
+.widget-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.widget-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ecs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+}
+
+.ecs-table th,
+.ecs-table td {
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px 8px;
+  font-size: 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.ecs-table th {
+  background: #f4f4f4;
+  color: #323130;
+  font-weight: 600;
+}
+
+.health-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.health-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.health-green {
+  color: #107c10;
+}
+
+.health-green .health-dot {
+  background: #107c10;
+}
+
+.health-red {
+  color: #a4262c;
+}
+
+.health-red .health-dot {
+  background: #a4262c;
+}
+
+.btn-primary,
+.btn-secondary {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+}
+
+.btn-primary {
+  background: #0078d4;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #106ebe;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #0078d4;
+  border-color: #c8c8c8;
+}
+
+.btn-secondary:hover {
+  background: #f4f4f4;
+}
+
+.status-message {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #605e5c;
+  min-height: 16px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #605e5c;
+}
