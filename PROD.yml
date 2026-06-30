@@ -1,0 +1,9 @@
+trigger:
+  - main
+
+extends:
+  template: azure-pipelines.yml
+  parameters:
+    environmentName: PROD
+    imageRepository: azure-pipeline-enhancement/prod
+    dockerRegistryServiceConnection: prod-acr-service-connection

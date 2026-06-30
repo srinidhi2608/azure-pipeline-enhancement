@@ -1,0 +1,56 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+parameters:
+  - name: environmentName
+    type: string
+  - name: imageRepository
+    type: string
+  - name: dockerRegistryServiceConnection
+    type: string
+  - name: dockerImageTag
+    type: string
+    default: '$(Build.BuildId)'
+
+variables:
+  - name: ENVIRONMENT
+    value: ${{ parameters.environmentName }}
+  - name: IMAGE_REPOSITORY
+    value: ${{ parameters.imageRepository }}
+  - name: DOCKER_IMAGE_TAG
+    value: ${{ parameters.dockerImageTag }}
+
+stages:
+  - stage: BuildAndTest
+    displayName: Build and Test
+    jobs:
+      - job: Build
+        steps:
+          - task: JavaToolInstaller@0
+            displayName: Use Java 25
+            inputs:
+              versionSpec: '25'
+              jdkArchitectureOption: x64
+              jdkSourceOption: PreInstalled
+
+          - task: Maven@4
+            displayName: Maven clean verify
+            inputs:
+              mavenPomFile: pom.xml
+              goals: clean verify
+              javaHomeOption: JDKVersion
+              jdkVersionOption: 1.25
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+
+          - task: Docker@2
+            displayName: Docker build and push
+            inputs:
+              command: buildAndPush
+              containerRegistry: ${{ parameters.dockerRegistryServiceConnection }}
+              repository: $(IMAGE_REPOSITORY)
+              dockerfile: Dockerfile
+              tags: |
+                $(DOCKER_IMAGE_TAG)

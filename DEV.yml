@@ -1,0 +1,9 @@
+trigger:
+  - dev
+
+extends:
+  template: azure-pipelines.yml
+  parameters:
+    environmentName: DEV
+    imageRepository: azure-pipeline-enhancement/dev
+    dockerRegistryServiceConnection: dev-acr-service-connection
