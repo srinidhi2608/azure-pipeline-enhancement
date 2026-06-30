@@ -11,6 +11,8 @@ docker compose up --build
 
 Application health endpoint: `http://localhost:8080/health`
 
+Local colorful monitor page with ministack-backed environment data: `http://localhost:8080/monitor`
+
 ## Azure Pipelines files
 
 - `azure-pipelines.yml`: shared pipeline template
@@ -39,11 +41,30 @@ Boilerplate for a custom Azure DevOps dashboard widget is available under:
   - ECS Health (green/red indicator)
   - Deployed Image Tag
   - Last Deployed By
+  - Desired / Running task count
   - Action (Deploy button)
 - JavaScript logic to:
   - fetch latest pipeline run and trigger user from Azure DevOps REST API
   - queue a new pipeline build when Deploy is clicked
   - call a placeholder AWS endpoint for ECS health/image data
+  - switch between DEV, UAT, and PROD with environment-specific colors
+  - fall back to local ministack mode for standalone testing
+
+## Local ministack testing
+
+The Spring Boot app now exposes a lightweight ministack simulator for local ECS-style testing.
+
+- `GET /api/ministack/environments`
+- `GET /api/ministack/environments/{DEV|UAT|PROD}/status`
+- `POST /api/ministack/environments/{environment}/services/{service}/deploy`
+
+Run the app, then open:
+
+```bash
+http://localhost:8080/monitor
+```
+
+This uses the same widget assets under `ado-widget-extension/widget` and shows a colorful environment selector for DEV, UAT, and PROD.
 
 ### Configure before use
 
@@ -95,3 +116,23 @@ The script outputs JSON array items containing:
 - `desiredCount`
 - `runningCount`
 - `imageTag`
+
+### Local live updates with ministack
+
+Use the same script locally against the embedded ministack simulator:
+
+```bash
+export STACK_MODE="ministack"
+export ENVIRONMENT="DEV"
+ado-widget-extension/scripts/ecs-status.sh
+```
+
+To keep receiving live local updates:
+
+```bash
+export STACK_MODE="ministack"
+export ENVIRONMENT="UAT"
+export WATCH="true"
+export WATCH_INTERVAL_SECONDS="5"
+ado-widget-extension/scripts/ecs-status.sh
+```

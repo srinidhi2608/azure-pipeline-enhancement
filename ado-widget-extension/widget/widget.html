@@ -9,11 +9,37 @@
 <body class="widget-body">
   <div class="widget-container">
     <div class="widget-title-row">
-      <h2 class="widget-title">ECS Deployment Monitor</h2>
+      <div>
+        <p class="widget-eyebrow">One-page environment health monitor</p>
+        <h2 class="widget-title">ECS Deployment Monitor</h2>
+      </div>
       <button id="refreshButton" class="btn-secondary" type="button">Refresh</button>
     </div>
 
+    <div class="environment-toolbar">
+      <div>
+        <p class="toolbar-label">Environment</p>
+        <div id="environmentSelector" class="environment-selector" role="tablist" aria-label="Select environment"></div>
+      </div>
+      <div id="clusterBadge" class="cluster-badge">Loading cluster…</div>
+    </div>
+
     <div id="statusMessage" class="status-message" role="status"></div>
+
+    <div id="summaryCards" class="summary-grid" aria-label="Environment summary">
+      <div class="summary-card">
+        <span class="summary-label">Healthy services</span>
+        <strong id="healthyServicesValue" class="summary-value">0 / 0</strong>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">Running tasks</span>
+        <strong id="runningTasksValue" class="summary-value">0 / 0</strong>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">Last sync</span>
+        <strong id="lastSyncValue" class="summary-value">--</strong>
+      </div>
+    </div>
 
     <table class="ecs-table" aria-label="ECS services deployment status">
       <thead>
@@ -22,12 +48,13 @@
           <th>ECS Health</th>
           <th>Deployed Image Tag</th>
           <th>Last Deployed By</th>
+          <th>Desired / Running</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody id="serviceRows">
         <tr>
-          <td colspan="5" class="empty-state">Loading service data...</td>
+          <td colspan="6" class="empty-state">Loading service data...</td>
         </tr>
       </tbody>
     </table>
