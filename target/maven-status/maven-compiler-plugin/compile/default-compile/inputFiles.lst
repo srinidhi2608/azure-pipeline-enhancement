@@ -1,2 +1,5 @@
 /home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/src/main/java/com/example/azurepipelineenhancement/AzurePipelineEnhancementApplication.java
 /home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/src/main/java/com/example/azurepipelineenhancement/HealthController.java
+/home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/src/main/java/com/example/azurepipelineenhancement/MinistackService.java
+/home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/src/main/java/com/example/azurepipelineenhancement/MonitorController.java
+/home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/src/main/java/com/example/azurepipelineenhancement/WebConfig.java
