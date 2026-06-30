@@ -22,11 +22,11 @@ Application health endpoint: `http://localhost:8080/health`
 
 Boilerplate for a custom Azure DevOps dashboard widget is available under:
 
-- `/home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/ado-widget-extension/vss-extension.json`
-- `/home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/ado-widget-extension/widget/widget.html`
-- `/home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/ado-widget-extension/widget/widget.css`
-- `/home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/ado-widget-extension/widget/widget.js`
-- `/home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/ado-widget-extension/scripts/ecs-status.sh`
+- `ado-widget-extension/vss-extension.json`
+- `ado-widget-extension/widget/widget.html`
+- `ado-widget-extension/widget/widget.css`
+- `ado-widget-extension/widget/widget.js`
+- `ado-widget-extension/scripts/ecs-status.sh`
 
 ### Widget capabilities included
 
@@ -65,7 +65,7 @@ Boilerplate for a custom Azure DevOps dashboard widget is available under:
 2. Create VSIX package:
 
    ```bash
-   cd /home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/ado-widget-extension
+   cd ado-widget-extension
    tfx extension create --manifest-globs vss-extension.json
    ```
 
@@ -87,7 +87,7 @@ Run the ECS status helper script from a backend host/runner with AWS CLI + jq:
 export CLUSTER_NAME="my-ecs-cluster"
 export AWS_REGION="us-east-1"
 export SERVICES="orders-service,catalog-service"
-/home/runner/work/azure-pipeline-enhancement/azure-pipeline-enhancement/ado-widget-extension/scripts/ecs-status.sh
+ado-widget-extension/scripts/ecs-status.sh
 ```
 
 The script outputs JSON array items containing:
