@@ -1,0 +1,9 @@
+trigger:
+  - uat
+
+extends:
+  template: azure-pipelines.yml
+  parameters:
+    environmentName: UAT
+    imageRepository: azure-pipeline-enhancement/uat
+    dockerRegistryServiceConnection: uat-acr-service-connection
